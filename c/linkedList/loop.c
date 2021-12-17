@@ -3,10 +3,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct node {
+struct node 
+{
     int data;
     struct node *next;
 };
+
+int add(struct node **head, int val);
+int detectLoop(struct node* head);
+int printList(struct node* head);
 
 int add(struct node **head, int val)
 {
@@ -18,17 +23,21 @@ int add(struct node **head, int val)
 
 int detectLoop(struct node* head)
 {
-    struct node *slow = head, *fast = head;
-    while (slow && fast && fast->next) 
+	if(head == NULL || head->next == NULL)
+	{
+		return false;
+	}
+    struct node *slow = head, *fast = head->next;
+    while (slow != fast) 
 		{
+			 if (fast==NULL || fast->next==NULL)     
+				{   
+				  return false;				  
+				}	
 			slow = slow->next;
 			fast = fast->next->next;
-			 if (fast==slow)     
-				{   
-				  return 1;				  
-				}			 
         }
-	 return 0; 
+	 return true; 
 }
   
 int printList(struct node* head)
@@ -48,7 +57,10 @@ int main()
     add(&head, 2);
     add(&head, 3);
 	add(&head, 5);
-	head->next->next->next=head->next;
+	add(&head, 2);
+	printList(head);
+    head->next->next->next=head->next;
+	
 	if(detectLoop(head))
 	{
       printf(" Loop is found ");

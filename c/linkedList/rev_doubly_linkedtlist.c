@@ -2,11 +2,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct node {
+struct node 
+{
     int data;
     struct node *next;
 	struct node *prev;
 };
+
+int add(struct node** head, int val);
+int reverseList(struct node** head);
+int printList(struct node* head);
 
 int add(struct node** head, int val)
 {

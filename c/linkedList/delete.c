@@ -2,10 +2,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct node {
+struct node 
+{
     int data;
     struct node *next;
 };
+
+int add(struct node **head, int val);
+void deleteNode(struct node* head);
+int printList(struct node* head);
 
 int add(struct node **head, int val)
 {
@@ -15,16 +20,16 @@ int add(struct node **head, int val)
     *head=new_node;
 }
 
-void deleteNode(struct node* head)
+void deleteNode(struct node* ptr)
 {
-    if (head->next == NULL)
+    if (ptr->next == NULL)
     {
-        free(head);
+        free(ptr);
         return;
     }
-    struct node* temp = head->next;
-    head->data = temp->data;
-    head->next = temp->next;
+    struct node* temp = ptr->next;
+    ptr->data = temp->data;
+    ptr->next = temp->next;
     free(temp);
 }
 
@@ -45,6 +50,6 @@ int main()
     add(&head, 2);
     add(&head, 3);
     printList(head);
-    deleteNode(head);
+    deleteNode(head->next);
     printList(head);
 }

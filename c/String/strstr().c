@@ -14,9 +14,9 @@ int Im_StrStr(char* str, char* strSub)
         temp = i;
         for(j=0; j<=l2; j++)
         {         
-            if(str[temp]==strSub[j])
+            if(str[temp] == strSub[j])
             {
-                if(j==l2-1)
+                if(j == l2-1)
                     return 1;
                 temp++;
             }
@@ -30,8 +30,8 @@ int Im_StrStr(char* str, char* strSub)
 int main()
 {
     char str[] = "Hello";
-    char strSub[] = "llo";
- 
+    char str_sub[] = "llo";
+
     if(Im_StrStr(str, strSub))
         printf("Sub-string found.");
     else

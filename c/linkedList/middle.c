@@ -2,10 +2,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct node {
+struct node 
+{
     int data;
     struct node *next;
 };
+
+int add(struct node** head, int val);
+void printMiddle(struct node *head);
+int printList(struct node* head);
+
 
 int add(struct node** head, int val)
 {
@@ -27,7 +33,7 @@ void printMiddle(struct node *head)
             fast = fast->next->next;
             slow = slow->next;
         }
-        printf("The middle element is [%d]\n\n", slow->data);
+        printf("The middle element is [%d]\n", slow->data);
     }
 }
   

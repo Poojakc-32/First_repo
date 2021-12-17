@@ -8,6 +8,10 @@ struct node
 		struct node *next;
     };
 
+int add(struct node **head, int val);
+int countCommonNodes(struct node *head1, struct node *head2);
+int printList(struct node *head);
+
 int add(struct node **head, int val)
 {
     struct node *new_node=(struct node*)malloc(sizeof(struct node));

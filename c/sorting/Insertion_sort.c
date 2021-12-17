@@ -1,7 +1,18 @@
 // C program for implementation of Insertion sort sort
 #include <stdio.h>
 void insertionsort(int arr[], int n);
- 
+void printArray(int arr[], int n); 
+
+int main()
+{
+    int arr[] = {5,4,3,10,0,7};
+    int n = sizeof(arr)/sizeof(arr[0]); //n=6
+    insertionsort(arr, n);
+    printf("Sorted array: \n");
+    printArray(arr, n);
+    return 0;
+}
+
 void insertionsort(int arr[], int n)
 {
     int i, key, j;
@@ -26,12 +37,3 @@ void printArray(int arr[], int n)
     printf("\n");
 }
  
-int main()
-{
-    int arr[] = {5,4,3,10,0,7};
-    int n = sizeof(arr)/sizeof(arr[0]); //n=6
-    insertionsort(arr, n);
-    printf("Sorted array: \n");
-    printArray(arr, n);
-    return 0;
-}

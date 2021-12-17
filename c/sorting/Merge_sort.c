@@ -1,16 +1,42 @@
-/* C program for Merge Sort */
 #include <stdio.h>
 #include <stdlib.h>
 void merge(int arr[], int l, int m, int r);
 void mergeSort(int arr[], int l, int r);
 void printArray(int A[], int size);
 
+int main()
+{
+    int arr[] = { 12, 11, 13, 5, 6, 7 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Given array is \n");
+    printArray(arr, n);
+
+    mergeSort(arr, 0, n - 1);
+
+    printf("Sorted array is \n");
+    printArray(arr, n);
+    return 0;
+}
+
+void mergeSort(int arr[], int l, int r)
+{
+    if (l < r) 
+	{
+        int m = l + (r - l) / 2;
+
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+    }
+}
+
 void merge(int arr[], int l, int m, int r)
 {
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
-
     int L[n1], R[n2];
 
     for (i = 0; i < n1; i++)
@@ -51,19 +77,6 @@ void merge(int arr[], int l, int m, int r)
     }
 }
 
-void mergeSort(int arr[], int l, int r)
-{
-    if (l < r) 
-	{
-        int m = l + (r - l) / 2;
-
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
-    }
-}
-
 void printArray(int A[], int size)
 {
     int i;
@@ -72,17 +85,3 @@ void printArray(int A[], int size)
     printf("\n");
 }
 
-int main()
-{
-    int arr[] = { 12, 11, 13, 5, 6, 7 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    printf("Given array is \n");
-    printArray(arr, n);
-
-    mergeSort(arr, 0, n - 1);
-
-    printf("\nSorted array is \n");
-    printArray(arr, n);
-    return 0;
-}

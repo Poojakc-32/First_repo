@@ -2,6 +2,7 @@
 #include <stdio.h>
 void swap(int *x, int *y);
 void bubbleSort(int arr[], int n);
+void printArray(int arr[], int size);
 
 void swap(int *x, int *y)
 {
@@ -10,6 +11,16 @@ void swap(int *x, int *y)
     *y = temp;
 }
  
+int main()
+{
+    int arr[] = {5,4,3,2,0,7};
+    int n = sizeof(arr)/sizeof(arr[0]); //n=6
+    bubbleSort(arr, n);
+    printf("Sorted array: \n");
+    printArray(arr, n);
+    return 0;
+}
+
 void bubbleSort(int arr[], int n)
 {
    int i, j;
@@ -31,12 +42,3 @@ void printArray(int arr[], int size)
     printf("\n");
 }
  
-int main()
-{
-    int arr[] = {5,4,3,2,0,7};
-    int n = sizeof(arr)/sizeof(arr[0]); //n=6
-    bubbleSort(arr, n);
-    printf("Sorted array: \n");
-    printArray(arr, n);
-    return 0;
-}
